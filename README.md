@@ -28,4 +28,4 @@ To get started with TechQuery Hub, follow these steps:
 2. Set up a local web server environment (e.g., XAMPP, WAMP).
 3. Import the database schema from the `database.sql` file.
 4. Configure the database connection in the PHP files.
-5. Launch the application and start exploring!
+5. Launch the application and start exploring!..
