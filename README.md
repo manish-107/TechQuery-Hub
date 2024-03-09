@@ -29,3 +29,33 @@ To get started with TechQuery Hub, follow these steps:
 3. Import the database schema from the `database.sql` file.
 4. Configure the database connection in the PHP files.
 5. Launch the application and start exploring!..
+
+## Tables
+`Users:`
+1. UserID (Primary Key)
+2. Username
+3. Password (hashed)
+4. Email
+5. JoinDate
+
+`Questions:`
+1. QuestionID (Primary Key)
+2. UserID (Foreign Key to Users table)
+4. Title
+5. Body
+6. CreationDate
+
+`Answers:`
+1. AnswerID (Primary Key)
+2. QuestionID (Foreign Key to Questions table)
+3. UserID (Foreign Key to Users table)
+4. Body
+5. CreationDate
+
+`Tags:`
+1. TagID (Primary Key)
+2. TagName
+
+`QuestionTags (a junction table to link questions with tags):`
+1. QuestionID (Foreign Key to Questions table)
+2. TagID (Foreign Key to Tags table)
