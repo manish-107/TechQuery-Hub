@@ -11,10 +11,14 @@
 <body>
     <div class="container element">
         <form action="#">
-            <h1>sign In</h1>
+            <h1>Sign up</h1>
             <div class="coolinput">
                 <label for="input" class="text">Name:</label>
                 <input type="text" placeholder="Enter your name..." name="input" class="input">
+            </div>
+            <div class="coolinput">
+                <label for="input" class="text">Email:</label>
+                <input type="email" placeholder="Enter your Email..." name="input" class="input">
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Password:</label>
@@ -22,9 +26,9 @@
             </div>
             <div class="center">
 
-                <button type="submit">Log In</button>
+                <button type="submit">Sign Up</button>
             </div>
-            <div class="signlink center">Don't have an account ? <a href="signup.php">Sign up</a></div>
+            <div class="signlink center">Already has account ? <a href="login.php">Sign in</a></div>
             <div class="lastText center"><span>TechQuery Hub - </span> Where Questions Find Answers</div>
         </form>
     </div>

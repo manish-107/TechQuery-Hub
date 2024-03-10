@@ -104,7 +104,7 @@
     }
 
     .lastText {
-        padding-top: 40px;
+        padding-top: 30px;
         font-weight: 50;
         font-size: small;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -113,4 +113,15 @@
     span {
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         color: #0a157c;
+    }
+
+    .signlink {
+        padding-top: 15px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        color: #0a157c;
+
+    }
+
+    a {
+        padding-left: 3px;
     }
