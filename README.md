@@ -1,4 +1,3 @@
-# TechQuery Hub
 
 ## Overview
 TechQuery Hub is a college mini project aimed at creating an interactive online platform for students to discuss various tech-related topics. Built with HTML, CSS, JavaScript, PHP, and SQL, this project serves as a practical application of programming skills in a collaborative environment.
