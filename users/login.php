@@ -13,12 +13,12 @@
         <form action="#">
             <h1>sign In</h1>
             <div class="coolinput">
-                <label for="input" class="text">Name:</label>
-                <input type="text" placeholder="Enter your name..." name="input" class="input">
+                <label for="input" class="text">Email:</label>
+                <input type="email" placeholder="Enter your email..." name="input" class="input" required>
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Password:</label>
-                <input type="password" placeholder="Enter your Password..." name="input" class="input">
+                <input type="password" placeholder="Enter your Password..." name="input" class="input" required>
             </div>
             <div class="center">
 
