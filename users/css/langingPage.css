@@ -2,19 +2,20 @@ body {
     margin: 0;
     padding: 0;
     background-color: #000000;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
     display: flex;
     justify-content: space-between;
-    color: aliceblue;
+    color: rgb(181, 185, 188);
     font-weight: 600;
     border-radius: 5px;
     background-color: transparent;
-    border-bottom: solid 1px white;
-    padding-left: 50px;
-    padding-right: 50px;
+    border-bottom: solid 1px rgb(158, 152, 152);
+    border-width: thin;
+    padding: 15px 50px;
+    height: 80px;
 
 }
 
@@ -28,8 +29,7 @@ header {
 }
 
 .logBtn:hover {
-    color: black;
-    background: white;
+    background: rgb(42, 41, 41);
 }
 
 div a {
@@ -44,4 +44,40 @@ div a {
 header div {
     display: flex;
     padding: 15px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.desctext {
+    color: rgba(255, 255, 255, 0.586);
+    text-align: center;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* border: 1px dotted rgb(82, 80, 80); */
+    height: 100px;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+    margin: 0 140px;
+
+}
+
+.headingtxt {
+    color: white;
+    font-size: xx-large;
+    /* border: 1px dotted rgb(82, 80, 80); */
+    padding: 0px;
+    margin-top: 80px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    letter-spacing: 7px;
+}
+
+.headingtxt h1 {
+    margin: 15px;
 }
