@@ -1,7 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #05051d;
+    background-color: #000000;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 header {
@@ -10,14 +11,25 @@ header {
     color: aliceblue;
     font-weight: 600;
     border-radius: 5px;
-    background-color: #000000;
+    background-color: transparent;
+    border-bottom: solid 1px white;
+    padding-left: 50px;
+    padding-right: 50px;
+
 }
 
 .logBtn {
-    background-color: azure;
-    color: black;
+    background-color: transparent;
+    color: rgb(252, 252, 252);
     border-radius: 2px;
+    border: solid 1px white;
+    cursor: cell;
+    transition: 1s;
+}
 
+.logBtn:hover {
+    color: black;
+    background: white;
 }
 
 div a {
