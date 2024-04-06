@@ -1,54 +1,10 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
-    font-family: "Shadows Into Light Two", cursive;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    color: rgb(181, 185, 188);
-    font-weight: 600;
-    border-radius: 5px;
-    background-color: transparent;
-    border-bottom: solid 1px rgb(158, 152, 152);
-    border-width: thin;
-    padding: 15px 50px;
-    height: 80px;
-
-}
-
-.logBtn {
-    background-color: transparent;
-    color: rgb(252, 252, 252);
-    border-radius: 2px;
-    border: solid 1px white;
-    cursor: cell;
-    transition: 1s;
-}
-
-.logBtn:hover {
-    background: rgb(42, 41, 41);
-}
-
-div a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    height: 10px;
-}
-
-header div {
-    display: flex;
-    padding: 15px;
-}
-
 .center {
     display: flex;
     justify-content: center;
+}
+
+body {
+    color: white;
 }
 
 .desctext {
@@ -57,7 +13,7 @@ header div {
     text-align: center;
     align-items: center;
 
-    /* font-family: "Limelight", sans-serif; */
+    font-family: "Limelight", sans-serif;
     /* border: 1px dotted rgb(82, 80, 80); */
     height: 100px;
 }
@@ -76,7 +32,6 @@ header div {
     padding: 0px;
     margin-top: 150px;
     font-family: "Rubik Doodle Shadow", system-ui;
-
     letter-spacing: 7px;
 
 }
