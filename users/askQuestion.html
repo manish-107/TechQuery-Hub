@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/getStarted.css">
+    <link rel="stylesheet" href="css/askQuestion.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,47 +79,39 @@
 
     <div style="padding-top:60px ;">
         <div class="content">
-            <h4>All questions</h4>
-            <button class="btn">Ask question</button>
+            <h4>Ask Question in public</h4>
         </div>
     </div>
 
     <!-- card -->
     <div class="card">
-        <div class="cardsec1">
-            <p style="margin: 3px;color: #6696de;">123 votes</p>
-            <p style="margin: 3px;color: aquamarine;">1 Answer</p>
-        </div>
-        <div class="cardsec2">
-            <div style="word-spacing: 1px;letter-spacing: 1px;">Title Lorem ipsum dolor sit amet consectetur adipisicing
-                elit.
-                Quam,
-                consectetur veritatis dolor
-                excepturi deleniti minus voluptate porro! Praesentium, voluptatibus quam!</div>
-            <div
-                style="font-size: small; color: gray;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-                description Lorem ipsum dolor sit amet consectetur
-                adipisicing
-                elit. Consectetur qui debitis nulla dignissimos distinctio commodi, quod magnam nisi optio? Facilis
-                eum
-                cupiditate ut illum praesentium maxime doloremque sit sed nulla hic possimus necessitatibus nihil
-                perferendis ad tempore, minus eligendi neque?</div>
-            <div class="btnasked">
+        <div class="rules">
+            <h5>Writing a good question
+                You’re ready to ask a programming-related question and this form will help guide you through the
+                process.
+                Looking to ask a non-programming question? See the topics here to find a relevant site. <br><br>
+                Rules:</h5>
+            <ul>
+                <li>Summarize your problem in a one-line title.</li>
+                <li>Describe your problem in more detail.</li>
+                <li>Add “tags” which help surface your question to members of the community.</li>
+                <li>Review your question and post it to the site.</li>
+            </ul>
 
-                <div>
-                    <button class="tagbtn">mern stack</button>
-                    <button class="tagbtn">php</button>
-                    <button class="tagbtn">mern stack</button>
-                    <button class="tagbtn">php</button>
-                    <button class="tagbtn">mern stack</button>
-                    <button class="tagbtn">php</button>
-                    <button class="tagbtn">mern stack</button>
-                    <button class="tagbtn">php</button>
-                </div>
-                <div class="qasked">Manish Asked on april 28</div>
-            </div>
         </div>
-    </div>
+
+
+        <!-- form controls -->
+        <div class="inputTitle">
+            <h5>Title</h5>
+            <h6>Be specific and imagine you’re asking a question to another person.</h6>
+            <input type="text" placeholder="eg: how to center a div">
+        </div>
+        <div class="inputTitle">
+            <h5>What are the details of your problem?</h5>
+            <h6>Introduce the problem and expand on what you put in the title. Minimum 20 characters.</h6>
+            <textarea style="height: 150px;" placeholder="e.g., how to center a div"></textarea>
+        </div>
     </div>
 
 </body>
