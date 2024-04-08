@@ -68,3 +68,50 @@ textarea {
     border-radius: 5px;
     box-sizing: border-box;
 }
+
+.btn {
+    align-items: center;
+    background-color: #040505;
+    border: 2px solid rgba(97, 224, 238, 0.821);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(217, 228, 230, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin-top: 20px;
+    height: 15px;
+    padding: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: 230px;
+}
+
+.btn:hover {
+    color: black;
+    background-color: aquamarine;
+}
+
+.endTxt {
+    display: flex;
+    justify-content: center;
+    /* margin: 50px;
+    font-size: larger; */
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.endTxt a {
+    margin: 0px;
+    padding: 5px;
+}

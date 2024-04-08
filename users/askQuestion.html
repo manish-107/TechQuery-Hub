@@ -110,10 +110,38 @@
         <div class="inputTitle">
             <h5>What are the details of your problem?</h5>
             <h6>Introduce the problem and expand on what you put in the title. Minimum 20 characters.</h6>
-            <textarea style="height: 150px;" placeholder="e.g., how to center a div"></textarea>
+            <textarea style="height: 250px;" placeholder="e.g., how to center a div"></textarea>
+        </div>
+        <div class="inputTitle">
+            <h5>Tags</h5>
+            <h6>Add up to 5 tags to describe what your question is about. Enter the tags one by one seperated by comma
+                ","</h6>
+            <input type="text" id="tagsInput" placeholder="e.g., mern stack, vba">
+        </div>
+        <div class="inputTitle">
+            <button class="btn">Submit If your done</button>
+        </div>
+
+        <div class="endTxt">
+            Happy coding - lets Connect <a style="color: aqua;" href="https://github.com/manish-107">GitHub</a> & <a
+                style="color: rgb(226, 4, 4);" href="https://twitter.com/Mani_xsh">Twitter</a>
         </div>
     </div>
+    <script>
+        const tagsInput = document.getElementById('tagsInput');
 
+        // Add event listener for input changes
+        tagsInput.addEventListener('input', function () {
+            // Get the value of the input field and split it by commas
+            const tags = tagsInput.value.split(',');
+
+            // Trim each tag to remove any leading or trailing whitespace
+            const trimmedTags = tags.map(tag => tag.trim());
+
+            // You can now use the trimmedTags array for further processing
+            console.log(trimmedTags);
+        });
+    </script>
 </body>
 
 </html>
