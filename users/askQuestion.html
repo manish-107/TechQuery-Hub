@@ -13,6 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Calistoga&family=DM+Serif+Text:ital@0;1&family=Eczar:wght@400..800&family=Forum&family=Macondo&display=swap"
         rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -117,6 +118,12 @@
             <h6>Add up to 5 tags to describe what your question is about. Enter the tags one by one seperated by comma
                 ","</h6>
             <input type="text" id="tagsInput" placeholder="e.g., mern stack, vba">
+            <div class="tagcol">
+                <!-- <div class="subtag">
+                    <div>mern</div>
+                    <button type="button">X</button>
+                </div> -->
+            </div>
         </div>
         <div class="inputTitle">
             <button class="btn">Submit If your done</button>
@@ -128,19 +135,35 @@
         </div>
     </div>
     <script>
-        const tagsInput = document.getElementById('tagsInput');
 
-        // Add event listener for input changes
-        tagsInput.addEventListener('input', function () {
-            // Get the value of the input field and split it by commas
-            const tags = tagsInput.value.split(',');
+        $(document).ready(function () {
+            $(document).ready(function () {
+                $('#tagsInput').on('input', function () {
+                    // Get the value of the input field and split it by commas
+                    const tags = $(this).val().split(',');
+                    console.log(tags)
+                    // Trim each tag to remove any leading or trailing whitespace
+                    const trimmedTags = tags.map(tag => tag.trim());
+                    console.log(trimmedTags)
 
-            // Trim each tag to remove any leading or trailing whitespace
-            const trimmedTags = tags.map(tag => tag.trim());
+                    // Clear existing tags
+                    $('.tagcol').empty();
 
-            // You can now use the trimmedTags array for further processing
-            console.log(trimmedTags);
+                    // Iterate over trimmedTags and create HTML structure for each tag
+                    trimmedTags.forEach(tag => {
+                        const $tag = $('<div class="subtag"></div>');
+                        $tag.append($('<div></div>').text(tag));
+
+
+                        $('.tagcol').append($tag);
+                    });
+                });
+            });
+
         });
+
+
+
     </script>
 </body>
 
