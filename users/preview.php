@@ -89,7 +89,8 @@
     <!-- card -->
     <div class="card">
         <div style="display: flex; column-gap: 10px;flex-direction: column;">
-            <h4 style="padding: 0px;margin: 0px;">How to Find Multiple Locations Simultaneously Using Plus Codes in
+            <h4 style="padding: 0px;margin: 0px;font-weight:bolder;">How to Find Multiple Locations Simultaneously Using
+                Plus Codes in
                 Google Maps API? </h4>
             <div
                 style="border-bottom: 1px solid rgba(165, 161, 161, 0.552);margin: 0px; display: flex;flex-direction: row; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
@@ -142,7 +143,10 @@
                     dolorem. A non eaque distinctio porro incidunt?
 
                 </p>
-                <div>By manish</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <p style="color: aqua;">By manish</p>
+                    <p style="color:chartreuse">on 06 monday</p>
+                </div>
             </div>
 
         </div>

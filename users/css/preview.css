@@ -91,11 +91,13 @@
 
 .ans {
     border-radius: 20px;
-    padding: 10px;
-    border: 1px solid #99999985;
+    padding-left: 25px;
+    padding-right: 25px;
+    border: 1px solid #e6e6e663;
     margin-left: 40px;
     margin-top: 20px;
     margin-bottom: 40px;
+    background-color: #9999992a;
 }
 
 textarea {
