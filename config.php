@@ -22,5 +22,4 @@ define('BASE_URL', 'http://localhost/TechQuery-Hub/');
 
 // included main class
 require_once 'app/Main.php';
-require_once 'app/Controller.php';
 require_once 'app/Admin.php';

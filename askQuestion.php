@@ -1,3 +1,12 @@
+<?php include 'config.php';
+$admin = new Admin();
+
+if (!isset($_SESSION['user_id'])) {
+    header('location:login.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

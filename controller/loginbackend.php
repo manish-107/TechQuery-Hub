@@ -12,12 +12,12 @@ if (isset($_POST['l_user'])) {
     if ($num > 0) {
         // $db_pass = $row['password'];
         // if (password_verify($vspass, $db_pass)) {
-            $id = $row['userid'];
-            $_SESSION['userid'] = $id;
-            echo "<script>alert('user login successfull'); window.location='../askQuestion.php' </script> ";
+            $id = $row['user_id'];
+            $_SESSION['user_id'] = $id;
 
+        echo "<script>alert('Login successfull'); window.location='../getStarted.php' </script> ";
         }
-        echo "<script>alert('email or password incorrect!!'); window.location='../getStarted.php' </script> ";
+        echo "<script>alert('email or password incorrect!!'); window.location='../index.php' </script> ";
 
     }else{
         echo "<script>alert('Enter input field'); window.location='../login.php' </script> ";

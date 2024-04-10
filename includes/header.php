@@ -4,7 +4,10 @@
                 <div>About</div>
             </div>
             <div>
-                <a href="login.php" class="logBtn">Log in</a>
-                <a href="signup.php" class="signBtn">Sign in</a>
+                <?php if($row['user_id']) : ?>
+             <a href=""><?php echo $row['username']; ?></a>
+                 <?php else : ?>
+            <a href="login.php" class="logBtn">Log in</a>
+                     <?php endif; ?>
             </div>
         </header>
