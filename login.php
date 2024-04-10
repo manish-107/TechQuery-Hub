@@ -24,7 +24,7 @@
 
                 <button type="submit">Log In</button>
             </div>
-            <div class="signlink center">Don't have an account ? <a href="signup.php">Sign up</a></div>
+            <div class="signlink center">Don't have an account ?<a href="signup.php">Sign up</a></div>
             <div class="lastText center"><span>TechQuery Hub - </span> Where Questions Find Answers</div>
         </form>
     </div>

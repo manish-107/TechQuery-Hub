@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Query</title>
-    <link rel="stylesheet" href="users/css/langingPage.css">
-    <link rel="stylesheet" href="users/css/header.css">
+    <link rel="stylesheet" href="css/langingPage.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -15,16 +15,8 @@
 </head>
 
 <body>
-    <header>
-        <div>
-            <div>Tech Query</div>
-            <div>About</div>
-        </div>
-        <div>
-            <a href="users/login.php" class="logBtn">Log in</a>
-            <a href="users/signup.php" class="signBtn">Sign in</a>
-        </div>
-    </header>
+           <?php include "includes/header.php"; ?>
+
 
     <main>
         <div class="grid">
@@ -36,7 +28,7 @@
                     community driven by curiosity and expertise. Welcome to the future of learning.</h3>
             </div>
             <div class="btns center">
-                <button class="btn" onClick="window.location.href = `users/getStarted.php` ">Get started</button>
+                <button class="btn" onClick="window.location.href = `getStarted.php` ">Get started</button>
                 <button class="btn2">Lets Connect</button>
             </div>
 
