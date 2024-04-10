@@ -18,7 +18,7 @@ define('SITE_CONTACT', 'your number');
 //email information
 define('SITE_EMAIL_INFO', 'your mail id');
 //url information
-define('BASE_URL', 'http://localhost/cud opertaion/');
+define('BASE_URL', 'http://localhost/TechQuery-Hub/');
 
 // included main class
 require_once 'app/Main.php';
