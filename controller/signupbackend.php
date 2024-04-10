@@ -16,6 +16,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
         echo "<script>alert('Email already exists'); window.location='../signup.php'; </script>";
         exit(); // Terminate script execution after redirecting
     } else {
+        //code
         // Insert new user into the database
         $stmt = $admin->cud("INSERT INTO `users`(`username`, `u_email`, `password`) VALUES ('$username','$email','$password')", "saved");
 
