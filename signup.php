@@ -10,19 +10,19 @@
 
 <body>
     <div class="container element">
-        <form action="#">
+        <form action="controller/signupbackend.php" method="POST">
             <h1>Sign up</h1>
             <div class="coolinput">
-                <label for="input" class="text">Name:</label>
-                <input type="text" placeholder="Enter your name..." name="input" class="input" required>
+                <label for="username" class="text">Name:</label>
+                <input type="text" placeholder="Enter your name..." name="username" class="input" required>
             </div>
             <div class="coolinput">
-                <label for="input" class="text">Email:</label>
-                <input type="email" placeholder="Enter your Email..." name="input" class="input" required>
+                <label for="email" class="text">Email:</label>
+                <input type="email" placeholder="Enter your Email..." name="email" class="input" required>
             </div>
             <div class="coolinput">
-                <label for="input" class="text">Password:</label>
-                <input type="password" placeholder="Enter your Password..." name="input" class="input" required>
+                <label for="password" class="text">Password:</label>
+                <input type="password" placeholder="Enter your Password..." name="password" class="input" required>
             </div>
             <div class="center">
 
