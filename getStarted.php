@@ -1,4 +1,10 @@
-
+<?php
+function limitWords($string, $word_limit)
+{
+    $words = explode(" ", $string);
+    return implode(" ", array_slice($words, 0, $word_limit)) . (count($words) > $word_limit ? "..." : "");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,64 +24,76 @@
 
 <body>
     <div class="fixed">
-              <?php include "includes/header.php"; ?>
+        <?php include "includes/header.php"; ?>
     </div>
 
     <!-- sidebar -->
-             <?php include "includes/sidebar.php"; ?>
+    <?php include "includes/sidebar.php"; ?>
     <!-- side bar ends -->
 
     <div style="padding-top:60px ;">
         <div class="content">
             <h4>All questions</h4>
-            <?php if(isset($row['user_id'])) : ?>
-            
-            <a href="askquestion.php" class="btn">Ask question</a>
-        <?php else : ?>
-            <a href="" class="btn">Ask question</a>
-            
-        <?php endif; ?>
+            <?php if (isset($row['user_id'])): ?>
+                <a href="askquestion.php" class="btn">Ask question</a>
+            <?php else: ?>
+                <a href="" class="btn">Ask question</a>
+            <?php endif; ?>
         </div>
     </div>
 
     <!-- card -->
-    <div class="card">
-        <div class="cardsec1">
-            <p style="margin: 3px;color: #6696de;">123 votes</p>
-            <p style="margin: 3px;color: aquamarine;">1 Answer</p>
-        </div>
-        <div class="cardsec2">
-            <div style="word-spacing: 1px;letter-spacing: 1px;">Title Lorem ipsum dolor sit amet consectetur adipisicing
-                elit.
-                Quam,
-                consectetur veritatis dolor
-                excepturi deleniti minus voluptate porro! Praesentium, voluptatibus quam!</div>
-            <div
-                style="font-size: small; color: gray;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-                description Lorem ipsum dolor sit amet consectetur
-                adipisicing
-                elit. Consectetur qui debitis nulla dignissimos distinctio commodi, quod magnam nisi optio? Facilis
-                eum
-                cupiditate ut illum praesentium maxime doloremque sit sed nulla hic possimus necessitatibus nihil
-                perferendis ad tempore, minus eligendi neque?</div>
-            <div class="btnasked">
+    <?php
+    // Include the database configuration file
+    
 
-                <div>
-                    <button class="tagbtn">mern stack</button>
-                    <button class="tagbtn">php</button>
-                    <button class="tagbtn">mern stack</button>
-                    <button class="tagbtn">php</button>
-                    <button class="tagbtn">mern stack</button>
-                    <button class="tagbtn">php</button>
-                    <button class="tagbtn">mern stack</button>
-                    <button class="tagbtn">php</button>
+    // Execute the SQL query to fetch data
+    $stmt = $admin->ret("SELECT q.title, q.description AS `desc`, q.questioneddate, u.username AS username, GROUP_CONCAT(t.tagname SEPARATOR ',') AS tags
+          FROM questions AS q 
+          JOIN questiontag AS qt ON q.questionid = qt.questionid
+          JOIN tags AS t ON qt.tagid = t.tagid
+          JOIN users AS u ON q.user_id = u.user_id
+          GROUP BY q.questionid"); // Added GROUP BY clause to group rows by question ID
+    
+    // Check if there are any rows fetched
+    if ($stmt) {
+        // Loop through each fetched row
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            ?>
+            <div class="card">
+                <div class="cardsec1">
+                    <p style="margin: 3px;color: #6696de;">123 votes</p>
+                    <p style="margin: 3px;color: aquamarine;">1 Answer</p>
                 </div>
-                <div class="qasked">Manish Asked on april 28</div>
-            </div>
-        </div>
-    </div>
-    </div>
+                <div class="cardsec2">
+                    <div style="word-spacing: 1px;letter-spacing: 1px;">Title <?php echo $row['title']; ?></div>
+                    <div
+                        style="font-size: small; color: gray;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                        Description <?php echo limitWords($row['desc'], 50); ?></div>
+                    <div class="btnasked">
+                        <div>
 
+
+                            <?php
+                            // Loop through tags for this question
+                            $tags = explode(',', $row['tags']);
+                            foreach ($tags as $tag) {
+                                echo '<button class="tagbtn">' . $tag . '</button>';
+                            }
+                            ?>
+                        </div>
+                        <div class="qasked"><?php echo $row['username']; ?> Asked on <?php echo $row['questioneddate']; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    } else {
+        // If no rows are fetched, display a message or take appropriate action
+        echo "No questions found.";
+    }
+    ?>
 </body>
 
 </html>

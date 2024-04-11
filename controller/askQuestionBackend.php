@@ -49,6 +49,6 @@ if (isset($_POST['q_submit'])) {
         $stmt = $admin->cud("INSERT INTO `questiontag`(`tagid`,`questionid`) VALUES ('$tagId','$q_id')", "saved");
     }
 
-    echo "<script>alert('event added successfully'); window.location = '../getStarted.php' </script> ";
+    echo "<script>alert('Question added successfully'); window.location = '../getStarted.php' </script> ";
 
 }
