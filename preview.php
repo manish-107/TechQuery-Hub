@@ -1,13 +1,7 @@
-<?php include 'config.php';
-$admin = new Admin();
-
+<?php
 if (!isset($_SESSION['user_id'])) {
     header('location:login.php');
 }
-
-$uid = $_SESSION['user_id'];
-$stmt = $admin->ret("SELECT * FROM `users` WHERE `user_id`='$uid'");
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,14 +1,4 @@
-<?php include 'config.php';
-$admin = new Admin();
 
-if (!isset($_SESSION['user_id'])) {
-    header('location:login.php');
-}
-
-$uid = $_SESSION['user_id'];
-$stmt = $admin->ret("SELECT * FROM `users` WHERE `user_id`='$uid'");
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +28,13 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     <div style="padding-top:60px ;">
         <div class="content">
             <h4>All questions</h4>
-            <button class="btn">Ask question</button>
+            <?php if(isset($row['user_id'])) : ?>
+            
+            <a href="askquestion.php" class="btn">Ask question</a>
+        <?php else : ?>
+            <a href="" class="btn">Ask question</a>
+            
+        <?php endif; ?>
         </div>
     </div>
 
