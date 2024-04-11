@@ -51,13 +51,12 @@
 
 
         <!-- form controls -->
-        <form action="controller/askQuestionBackend.php" method="POST" enctype="multipart/form-data">
+        <form action="controller/askQuestionBackend.php"  method="POST" enctype="multipart/form-data">
         <div class="inputTitle">
             <h5>Title</h5>
             <h6>Be specific and imagine you’re asking a question to another person.</h6>
             <input type="text" name="q_title" placeholder="eg: how to center a div" required>
         </div>
-       <input type="text" name="u_id" value="<?php echo $_SESSION['user_id'] ; ?>" hidden class="form-control">
         <div class="inputTitle">
             <h5>What are the details of your problem?</h5>
             <h6>Introduce the problem and expand on what you put in the title. Minimum 20 characters.</h6>
@@ -66,13 +65,13 @@
         <div class="inputTitle">
             <h5>Code snippet of image</h5>
             <h6>Be specific about the input you're providing</h6>
-            <input type="file"  id="fileInput" name="q_pic" accept=".jpg, .jpeg, .png" required>
+            <input type="file" id="fileInput" name="q_pic"  required>
         </div>
         <div class="inputTitle">
             <h5>Tags</h5>
             <h6>Add up to 5 tags to describe what your question is about. Enter the tags one by one seperated by comma
                 ","</h6>
-            <input type="text" id="tagsInput" name="q_tags" onChange=`trimmedTags`  placeholder="e.g., mern stack, vba" required>
+            <input type="text" id="tagsInput" name="q_tags" onchange="trimmedTags()" placeholder="e.g., mern stack, vba" required>
             <div class="tagcol">
                 <!-- <div class="subtag">
                     <div>mern</div>

@@ -3,30 +3,32 @@ include '../config.php';
 $admin = new Admin();
 
 if (isset($_POST['q_submit'])) {
-    $count = 1;
-    $count++;
 
-    $q_id =  "cc10" . $count;
-    $uid =  $_POST['u_id'];
+
+    $q_id = "cc10" . uniqid();
+    $uid = $_SESSION['user_id'];
     $qtitle = $_POST['q_title'];
     $qdesc = $_POST['q_desc'];
-    $qpic = $_POST['q_desc'];
-    $qtags = $_POST['q_tags'];
-    $img_path = "uploads/" . basename($_FILES['q_pic']['name']);
-    move_uploaded_file($_FILES['q_pic ']['tmp_name'], $img_path);
+    // Check if the 'q_pic' file was uploaded
+    if(isset($_FILES['q_pic'])) {
+        // File uploaded successfully
+        $img_path = "uploads/" . basename($_FILES['q_pic']['name']);
+        if (move_uploaded_file($_FILES['q_pic']['tmp_name'], $img_path)) {
+            echo "File uploaded successfully.";
+        } else {
+            echo "Failed to upload file.";
+        }
+    } else {
+        // 'q_pic' file was not uploaded
+        $img_path = ""; // Set default or handle accordingly
+    }
+  
+    // $qtags = $_POST['q_tags'];
 
-    echo $q_id;
-    echo $uid;
-    echo $qtitle;
-    echo $qdesc;
-    echo $qpic;
-    echo $qtags;
-    echo $img_path;
-
-    // $stmt = $admin->cud("INSERT INTO `questions`( `questionid `, `user_id`, `title`, `description`, `qimage`) VALUES ('$q_id','$uid','$qtitle','$qdesc','$img_path')", "saved");
+    $stmt = $admin->cud("INSERT INTO `questions`( `questionid`, `user_id`, `title`, `description`, `qimage`) VALUES ('$q_id','$uid','$qtitle','$qdesc','$img_path')", "saved");
 
 
 
-    // echo "<script>alert('event added successfully'); window.location='../admin/viewevent.php' </script> ";
+    echo "<script>alert('event added successfully'); window.location='../getStarted.php' </script> ";
 }
 ?>
