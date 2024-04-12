@@ -48,12 +48,13 @@ function limitWords($string, $word_limit)
     
 
     // Execute the SQL query to fetch data
-    $stmt = $admin->ret("SELECT q.title, q.description AS `desc`, q.questioneddate, u.username AS username, GROUP_CONCAT(t.tagname SEPARATOR ',') AS tags
+    $stmt = $admin->ret("SELECT q.questionid, q.title, q.description AS `desc`, q.questioneddate, u.username AS username, GROUP_CONCAT(t.tagname SEPARATOR ',') AS tags
           FROM questions AS q 
           JOIN questiontag AS qt ON q.questionid = qt.questionid
           JOIN tags AS t ON qt.tagid = t.tagid
           JOIN users AS u ON q.user_id = u.user_id
-          GROUP BY q.questionid"); // Added GROUP BY clause to group rows by question ID
+          GROUP BY q.questionid");
+    // Added GROUP BY clause to group rows by question ID
     
     // Check if there are any rows fetched
     if ($stmt) {
@@ -66,7 +67,12 @@ function limitWords($string, $word_limit)
                     <p style="margin: 3px;color: aquamarine;">1 Answer</p>
                 </div>
                 <div class="cardsec2">
-                    <div style="word-spacing: 1px;letter-spacing: 1px;">Title <?php echo $row['title']; ?></div>
+
+                    <div style="word-spacing: 1px;letter-spacing: 1px;display:flex;"><a
+                            href="preview.php?question_id=<?php echo $row['questionid']; ?>&qusername=<?php echo $row['username']; ?>"
+                            style="margin:3px;">Title <?php echo $row['title']; ?></a>
+                    </div>
+
                     <div
                         style="font-size: small; color: gray;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
                         Description <?php echo limitWords($row['desc'], 50); ?></div>

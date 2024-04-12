@@ -52,9 +52,16 @@ body {
 }
 
 .cardsec1 {
-    width: 15%;
+    width: 150px;
 }
 
+.cardsec2 a {
+    padding: 6px;
+}
+
+.cardsec2{
+    width: fit-content;
+}
 .cardsec2 div {
     padding: 6px;
 }
