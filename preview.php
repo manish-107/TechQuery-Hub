@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TechQuery-Hub</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/preview.css">
     <link rel="stylesheet" href="css/sidebar.css">
@@ -62,9 +62,14 @@
         </div>
 
         <div class="answerq">
-            <div style="padding-bottom: 10px;">Give your answer:</div>
-            <textarea style="height: 120px;" placeholder="give your answer here..." required></textarea>
-            <button class="btn" style="width: 200px;margin-top: 10px;">Post Answer</button>
+            <form action="controller/uploadAnswer.php" method="post">
+                <div style="padding-bottom: 10px;">Give your answer:</div>
+                <input type="text" value="<?php echo $uid ?>" name="user_id" hidden>
+                <input type="text" value="<?php echo $question_id ?>" name="questionid" hidden>
+                <textarea style="height: 120px;" name="a_text" placeholder="give your answer here..."
+                    required></textarea>
+                <button class="btn" name="a_submit" style="width: 200px;margin-top: 10px;">Post Answer</button>
+            </form>
         </div>
 
 

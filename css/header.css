@@ -9,7 +9,7 @@ header {
     border-width: thin;
     padding: 10px 50px;
     height: 65px;
-    /* backdrop-filter: brightness(110%) blur(6px); */
+    backdrop-filter: brightness(110%) blur(6px);
 }
 
 .fixed {
