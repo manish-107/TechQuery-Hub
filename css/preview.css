@@ -70,6 +70,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 9999;
     width: 90%;
     height: 90%;
@@ -80,13 +81,12 @@
     cursor: zoom-in;
 }
 
-.preview-img.preview-active:hover {
-    cursor: zoom-out;
-}
-
+.preview-img.preview-active:hover,
 .preview-img.preview-active:active {
     cursor: zoom-out;
 }
+
+
 
 .ans {
     border-radius: 20px;
