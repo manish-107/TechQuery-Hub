@@ -29,7 +29,7 @@
     <div style="padding-top:60px ;">
         <div class="content">
             <h4>Question</h4>
-            <button href="askquestion.php" class="btn">Ask question</button>
+            <a href="askquestion.php" class="btn">Ask question</a>
         </div>
     </div>
     <?php

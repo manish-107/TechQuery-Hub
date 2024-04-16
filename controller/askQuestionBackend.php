@@ -4,11 +4,11 @@ $admin = new Admin();
 
 if (isset($_POST['q_submit'])) {
 
-
     $q_id = "cc10" . uniqid();
     $uid = $_SESSION['user_id'];
     $qtitle = $_POST['q_title'];
     $qdesc = $_POST['q_desc'];
+
     // Check if the 'q_pic' file was uploaded
     if (isset($_FILES['q_pic'])) {
         // File uploaded successfully
@@ -22,13 +22,20 @@ if (isset($_POST['q_submit'])) {
         // 'q_pic' file was not uploaded
         $img_path = ""; // Set default or handle accordingly
     }
+
     $stmt = $admin->cud("INSERT INTO `questions`( `questionid`, `user_id`, `title`, `description`, `qimage`) VALUES ('$q_id','$uid','$qtitle','$qdesc','$img_path')", "saved");
+
     $qtags = $_POST['q_tags'];
     $tagsArray = explode(',', $qtags);
 
     foreach ($tagsArray as $tag) {
         $tag = trim($tag);
-
+        $istagexist = $admin->ret("SELECT `tagid` FROM `tags` WHERE `tagname`='$tag'");
+        if ($istagexist && $istagexist->rowCount() > 0) {
+            // Tag already exists, no need to insert again
+            continue;
+        }
+        // Tag doesn't exist, insert it into the database
         $stmt = $admin->cud("INSERT INTO `tags`(`tagname`) VALUES ('$tag')", "saved");
     }
 
