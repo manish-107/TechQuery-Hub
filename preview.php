@@ -40,7 +40,17 @@
 
     $stms = $admin->ret("SELECT * FROM `questions` WHERE `questionid`='$question_id'");
     $qrow = $stms->fetch(PDO::FETCH_ASSOC);
-    ?>
+
+
+    // Execute the SQL query to fetch data
+    $stma = $admin->ret("SELECT a.*, u.username 
+                        FROM `answers` a
+                        LEFT JOIN `users` u ON a.user_id = u.user_id
+                        WHERE a.`questionid` = '$question_id'");
+    // Added LEFT JOIN to fetch username from users table based on userid
+    $acount = $stma->rowCount()
+
+        ?>
     <!-- card -->
     <div class="card">
         <div style="display: flex; column-gap: 10px;flex-direction: column;">
@@ -48,7 +58,7 @@
             <div
                 style="border-bottom: 1px solid rgba(165, 161, 161, 0.552);margin: 0px; display: flex;flex-direction: row; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
                 <h5 style="padding-top: 20px;margin: 0px;">Asked : <?php echo $qrow['questioneddate']; ?> </h5>
-                <h5 style="padding: 20px;margin: 0px;">Answers : 1</h5>
+                <h5 style="padding: 20px;margin: 0px;">Answers : <?php echo $acount ?></h5>
                 <h5 style="padding-top: 20px;margin: 0px;">By : <?php echo $qusername ?></h5>
             </div>
         </div>
@@ -76,16 +86,9 @@
         <div class="qanswers">
             <h3>Recent Answers :</h3>
             <?php
-            // Include the database configuration file
-            // Assuming $admin is your PDO connection object
-            
-            // Execute the SQL query to fetch data
-            $stma = $admin->ret("SELECT a.*, u.username 
-                        FROM `answers` a
-                        LEFT JOIN `users` u ON a.user_id = u.user_id
-                        WHERE a.`questionid` = '$question_id'");
-            // Added LEFT JOIN to fetch username from users table based on userid
-            
+
+
+
             // Check if there are any rows fetched
             if ($stma && $stma->rowCount() > 0) {
                 // Loop through each fetched row

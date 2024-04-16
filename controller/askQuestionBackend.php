@@ -14,9 +14,9 @@ if (isset($_POST['q_submit'])) {
         // File uploaded successfully
         $img_path = "uploads/" . basename($_FILES['q_pic']['name']);
         if (move_uploaded_file($_FILES['q_pic']['tmp_name'], $img_path)) {
-            echo "File uploaded successfully.";
+            // echo "File uploaded successfully.";
         } else {
-            echo "Failed to upload file.";
+            // echo "Failed to upload file.";
         }
     } else {
         // 'q_pic' file was not uploaded
