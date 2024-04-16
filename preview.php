@@ -29,7 +29,7 @@
     <div style="padding-top:60px ;">
         <div class="content">
             <h4>Question</h4>
-            <button class="btn">Ask question</button>
+            <button href="askquestion.php" class="btn">Ask question</button>
         </div>
     </div>
     <?php
@@ -75,29 +75,40 @@
 
         <div class="qanswers">
             <h3>Recent Answers :</h3>
-            <div class="ans">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, rem praesentium? Delectus provident
-                    et
-                    officia tempore nulla, consectetur minus ipsa incidunt accusantium assumenda labore sunt alias nemo
-                    odit
-                    porro sed accusamus sequi deleniti vitae tenetur? Cupiditate commodi aliquam qui ab impedit neque
-                    voluptatibus doloribus sequi officiis architecto.
-                    Nostrum officiis accusamus voluptatem impedit
-                    obcaecati repellat eligendi maxime vel officia quasi libero maiores a, facilis amet odit nisi
-                    tempore
-                    quo deserunt? Asperiores atque officia fugit ipsum quas architecto cupiditate laborum debitis
-                    soluta,
-                    dolorem illo hic adipisci. Suscipit, aliquam. Sit voluptate cumque ipsum rem laboriosam deleniti
-                    dolorem. A non eaque distinctio porro incidunt?
-
-                </p>
-                <div style="display: flex; justify-content: space-between;">
-                    <p style="color: aqua;">By manish</p>
-                    <p style="color:chartreuse">on 06 monday</p>
-                </div>
-            </div>
-
+            <?php
+            // Include the database configuration file
+            // Assuming $admin is your PDO connection object
+            
+            // Execute the SQL query to fetch data
+            $stma = $admin->ret("SELECT a.*, u.username 
+                        FROM `answers` a
+                        LEFT JOIN `users` u ON a.user_id = u.user_id
+                        WHERE a.`questionid` = '$question_id'");
+            // Added LEFT JOIN to fetch username from users table based on userid
+            
+            // Check if there are any rows fetched
+            if ($stma && $stma->rowCount() > 0) {
+                // Loop through each fetched row
+                while ($rowz = $stma->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
+                    <div class="ans">
+                        <p>
+                            <?php echo $rowz['answerdesc']; ?>
+                        </p>
+                        <div style="display: flex; justify-content: space-between;">
+                            <p style="color: aqua;">By <?php echo $rowz['username']; ?></p>
+                            <p style="color:chartreuse"><?php echo $rowz['answereddate']; ?></p>
+                        </div>
+                    </div>
+                    <?php
+                }
+            } else {
+                // If no rows are fetched, display a message or take appropriate action
+                echo "<h2>No answers found.</h2>";
+            }
+            ?>
         </div>
+
 
     </div>
     <script>
