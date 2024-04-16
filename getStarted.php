@@ -53,7 +53,8 @@ function limitWords($string, $word_limit)
           JOIN questiontag AS qt ON q.questionid = qt.questionid
           JOIN tags AS t ON qt.tagid = t.tagid
           JOIN users AS u ON q.user_id = u.user_id
-          GROUP BY q.questionid");
+          GROUP BY q.questionid
+          ORDER BY q.questioneddate DESC");
     // Added GROUP BY clause to group rows by question ID
     
     // Check if there are any rows fetched
