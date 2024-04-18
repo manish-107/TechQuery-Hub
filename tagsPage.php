@@ -1,3 +1,10 @@
+<?php
+function limitWords($string, $word_limit)
+{
+    $words = explode(" ", $string);
+    return implode(" ", array_slice($words, 0, $word_limit)) . (count($words) > $word_limit ? "..." : "");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,34 +42,28 @@
             <?php endif; ?>
         </div>
     </div>
-
     <div class="tagcon">
-        <div href="" class="intagcon">
-            <div style="margin:1px" href="">Tag name</div>
-            <div>desc : this is the description on tag..</div>
-            <p style="margin:1px">Question : 5</p>
-        </div>
-        <div href="" class="intagcon">
-            <div style="margin:1px" href="">Tag name</div>
-            <div>desc : this is the description on tag..</div>
-            <p style="margin:1px">Question : 5</p>
-        </div>
-        <div href="" class="intagcon">
-            <div style="margin:1px" href="">Tag name</div>
-            <div>desc : this is the description on tag..</div>
-            <p style="margin:1px">Question : 5</p>
-        </div>
-        <div href="" class="intagcon">
-            <div style="margin:1px" href="">Tag name</div>
-            <div>desc : this is the description on tag..</div>
-            <p style="margin:1px">Question : 5</p>
-        </div>
-        <div href="" class="intagcon">
-            <div style="margin:1px" href="">Tag name</div>
-            <div>desc : this is the description on tag..</div>
-            <p style="margin:1px">Question : 5</p>
-        </div>
+        <?php
+        // Assuming $admin->ret() returns a valid PDO statement
+        $stmtt = $admin->ret("SELECT t.tagid, t.tagname, COUNT(qt.questionid) AS question_count, MAX(q.questioneddate) AS last_updated_question_date, MAX(q.description) AS last_updated_question_desc
+        FROM tags AS t
+        LEFT JOIN questiontag AS qt ON t.tagid = qt.tagid
+        LEFT JOIN questions AS q ON qt.questionid = q.questionid
+        GROUP BY t.tagid, t.tagname
+        ORDER BY last_updated_question_date DESC;");
+
+        while ($rowtt = $stmtt->fetch(PDO::FETCH_ASSOC)) {
+            ?>
+            <div href="" class="intagcon">
+                <div style="margin-bottom:5px;color: aqua;" href=""><?php echo $rowtt['tagname'] ?></div>
+                <div> <?php echo limitWords($rowtt['last_updated_question_desc'], 10); ?></div>
+                <p style="margin:3px">Question :<?php echo $rowtt['question_count'] ?></p>
+            </div>
+            <?php
+        }
+        ?>
     </div>
+
 
 </body>
 
