@@ -88,6 +88,7 @@ h4 {
 }
 
 .btnasked {
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }

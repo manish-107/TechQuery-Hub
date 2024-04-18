@@ -72,14 +72,22 @@
         </div>
 
         <div class="answerq">
-            <form action="controller/uploadAnswer.php" method="post">
-                <div style="padding-bottom: 10px;">Give your answer:</div>
-                <input type="text" value="<?php echo $uid ?>" name="user_id" hidden>
-                <input type="text" value="<?php echo $question_id ?>" name="questionid" hidden>
-                <textarea style="height: 120px;" name="a_text" placeholder="give your answer here..."
-                    required></textarea>
-                <button class="btn" name="a_submit" style="width: 200px;margin-top: 10px;">Post Answer</button>
-            </form>
+            <?php if (isset($row['user_id'])): ?>
+                <form action="controller/uploadAnswer.php" method="post">
+                    <div style="padding-bottom: 10px;">Give your answer:</div>
+                    <input type="text" value="<?php echo $uid ?>" name="user_id" hidden>
+                    <input type="text" value="<?php echo $question_id ?>" name="questionid" hidden>
+                    <textarea style="height: 120px;" name="a_text" placeholder="give your answer here..."
+                        required></textarea>
+                    <button class="btn" name="a_submit" style="width: 200px;margin-top: 10px;">Post Answer</button>
+                </form>
+            <?php else: ?>
+                <div>
+                    <a style="margin-right:10px;" class="btn" href="login.php" class="logBtn">Log in</a>
+                    <a class="btn" href="signup.php" class="logBtn">Sign up</a>
+                </div>
+            <?php endif; ?>
+
         </div>
 
 

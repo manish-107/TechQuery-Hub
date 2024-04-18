@@ -5,6 +5,7 @@ function limitWords($string, $word_limit)
     return implode(" ", array_slice($words, 0, $word_limit)) . (count($words) > $word_limit ? "..." : "");
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,8 +46,6 @@ function limitWords($string, $word_limit)
     <!-- card -->
     <?php
     // Include the database configuration file
-    
-
     // Execute the SQL query to fetch data
     $stmt = $admin->ret("SELECT q.questionid, q.title, q.description AS `desc`, q.questioneddate, u.username AS username, GROUP_CONCAT(t.tagname SEPARATOR ',') AS tags
           FROM questions AS q 
@@ -55,17 +54,22 @@ function limitWords($string, $word_limit)
           JOIN users AS u ON q.user_id = u.user_id
           GROUP BY q.questionid
           ORDER BY q.questioneddate DESC");
-    // Added GROUP BY clause to group rows by question ID
-    
+
     // Check if there are any rows fetched
     if ($stmt) {
         // Loop through each fetched row
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Fetch the count of answers for this question
+            $stma = $admin->ret("SELECT COUNT(*) AS answer_count
+                            FROM `answers` 
+                            WHERE `questionid` = '{$row['questionid']}'");
+            $acount = $stma->fetch(PDO::FETCH_ASSOC)['answer_count'];
+
             ?>
             <div class="card">
                 <div class="cardsec1">
                     <p style="margin: 3px;color: #6696de;">123 votes</p>
-                    <p style="margin: 3px;color: aquamarine;">1 Answer</p>
+                    <p style="margin: 3px;color: aquamarine;"><?php echo $acount ?> Answers</p> <!-- Corrected here -->
                 </div>
                 <div class="cardsec2">
 
@@ -75,12 +79,11 @@ function limitWords($string, $word_limit)
                     </div>
 
                     <div
-                        style="font-size: small; color: gray;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-                        Description <?php echo limitWords($row['desc'], 50); ?></div>
+                        style="width:100%;font-size: small; color: gray;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                        <?php echo limitWords($row['desc'], 50); ?>
+                    </div>
                     <div class="btnasked">
                         <div>
-
-
                             <?php
                             // Loop through tags for this question
                             $tags = explode(',', $row['tags']);
