@@ -17,7 +17,7 @@ if (isset($_SESSION['user_id'])) {
     </div>
     <div>
         <?php if (isset($row['user_id'])): ?>
-            <a href=""><?php echo $row['username']; ?></a>
+            <a href="userProfile.php"><?php echo $row['username']; ?></a>
             <a href="controller/u_logout.php" class="logBtn">Log Out</a>
         <?php else: ?>
             <a href="login.php" class="logBtn">Log in</a>

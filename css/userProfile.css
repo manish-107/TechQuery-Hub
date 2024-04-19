@@ -31,7 +31,7 @@
         }
        
 
-        .inputBox input[type="submit"] {
+        .button {
             margin-top: 30px;
             background-color: #007bff;
             color: #fff;
@@ -40,7 +40,14 @@
             padding: 10px 20px;
             cursor: pointer;
             font-size: 16px;
+             width: 100%;
+            padding: 10px;
+            margin-top: 10  px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            outline: none;
+            font-size: 16px;
         }
-        .inputBox input[type="submit"]:hover {
+        .button:hover {
             background-color: #0056b3;
         }

@@ -3,12 +3,10 @@ require '../config.php';
 $admin = new Admin();
 
 // Check if the POST data is set
-if (isset($_POST["email"]) && isset($_POST["password"])) {
+if (isset($_POST["upt_btn"])) {
     // Sanitize user input
-    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-
+    $username = filter_var($_POST['upt_name'], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['upt_email'], FILTER_SANITIZE_EMAIL);
     // Check if the email already exists in the database
     $stmt = $admin->ret("SELECT * FROM `users` WHERE `u_email`='$email'");
     $num = $stmt->rowCount();
@@ -17,9 +15,9 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         exit(); // Terminate script execution after redirecting
     } else {
         // Insert new user into the database
-        $stmt = $admin->cud("INSERT INTO `users`(`username`, `u_email`, `password`) VALUES ('$username','$email','$password')", "saved");
+        $ustmt = $admin->cud("UPDATE `users` SET `username`='$username',`u_email`='$email'", "updated");
 
-        echo "<script>alert('User added successfully'); window.location='../login.php'; </script>";
+        echo "<script>alert('User updated successfully'); window.location='../userProfile.php'; </script>";
         exit(); // Terminate script execution after redirecting
     }
 } else {

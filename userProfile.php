@@ -26,7 +26,11 @@ function limitWords($string, $word_limit)
 
 <body>
     <div class="fixed">
-        <?php include "includes/header.php"; ?>
+        <?php include "includes/header.php";
+
+        if (!isset($_SESSION['user_id'])) {
+            header('location:login.php');
+        } ?>
     </div>
 
     <!-- sidebar -->
@@ -38,19 +42,20 @@ function limitWords($string, $word_limit)
             <h3>Updated user details</h3>
         </div>
         <div class="formCon">
-            <form action="">
+            <form action="controller/updateUserDetails.php" method="POST">
                 <div class="form">
                     <div class="inputBox">
                         <label for="">Username</label>
-                        <input type="text">
+                        <input value="<?php echo $row['username']; ?>" name="upt_name" type="text">
                     </div>
                     <div class="inputBox">
                         <label for="">Email </label>
-                        <input type="email">
+                        <input value="<?php echo $row['u_email']; ?>" name="upt_email" type="email">
                     </div>
 
                     <div class="inputBox">
-                        <input type="submit">
+                        <button class="button" onclick="return confirm('are you sure')" type="submit"
+                            name="upt_btn">Update </button>
                     </div>
                 </div>
             </form>
