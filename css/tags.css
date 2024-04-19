@@ -2,7 +2,7 @@
         margin-left: 250px;
         padding: 20px;
         display: grid;
-        grid-template-columns: repeat(4, 1fr); 
+        grid-template-columns: repeat(4 , 1fr); 
         margin-top: 20px;
         gap: 20px;
          padding-top: 0px;
@@ -18,7 +18,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         width: fit-content;
-        height: 100px;
+        height: 120px;
         border-radius: 10px;
     }
 
