@@ -41,14 +41,16 @@ function limitWords($string, $word_limit)
             <form action="">
                 <div class="form">
                     <div class="inputBox">
-                        <input type="text" required> <i>Username</i>
+                        <label for="">Username</label>
+                        <input type="text">
                     </div>
                     <div class="inputBox">
-                        <input type="password" required> <i>Password</i>
+                        <label for="">Email </label>
+                        <input type="email">
                     </div>
 
                     <div class="inputBox">
-                        <input type="submit" value="Login">
+                        <input type="submit">
                     </div>
                 </div>
             </form>
