@@ -27,36 +27,23 @@
 
     <div style="padding-top:60px ;">
         <div class="content">
-            <h4>All questions</h4>
-            <?php if (isset($row['user_id'])): ?>
-                <a href="askquestion.php" class="btn">Ask question</a>
-            <?php else: ?>
-                <a href="" class="btn">Ask question</a>
-            <?php endif; ?>
+            <h4>All users</h4>
+            <a href="askquestion.php" class="btn">Ask question</a>
         </div>
     </div>
     <div class="tagcon">
         <?php
-        // Assuming $admin->ret() returns a valid PDO statement
-        while ($rowtt = $stmtt->fetch(PDO::FETCH_ASSOC)) {
-            $userId = $rowtt['user_id'];
-            // Assuming you have a PDO connection named $pdo
-            $query = "SELECT u.username, COUNT(DISTINCT q.id) AS number_of_questions, COUNT(DISTINCT a.id) AS number_of_answers, u.join_date
-                      FROM users u
-                      LEFT JOIN question q ON u.id = q.user_id
-                      LEFT JOIN answer a ON u.id = a.user_id
-                      WHERE u.id = :userId
-                      GROUP BY u.id";
-
-            $stmt = $pdo->prepare($query);
-            $stmt->execute(['userId' => $userId]);
-            $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Assuming $pdo is your PDO connection
+        $userstmt = $admin->ret("SELECT u.username, COUNT(q.questionid ) AS number_of_questions, u.joindate
+                            FROM users u
+                            LEFT JOIN questions q ON u.user_id  = q.user_id
+                            GROUP BY u.user_id");
+        while ($userrow = $userstmt->fetch(PDO::FETCH_ASSOC)) {
             ?>
             <div href="" class="intagcon">
-                <div style="margin-bottom:5px;color: aqua;" href=""><?php echo $userData['username'] ?></div>
-                <div>Number of questions: <?php echo $userData['number_of_questions'] ?></div>
-                <div>Number of answers: <?php echo $userData['number_of_answers'] ?></div>
-                <div>Date of joining: <?php echo $userData['join_date'] ?></div>
+                <div style="margin-bottom:5px;color: aqua;" href=""><?php echo $userrow['username'] ?></div>
+                <div>Total number of questions: <?php echo $userrow['number_of_questions'] ?></div>
+                <div>Date of joining: <?php echo $userrow['joindate'] ?></div>
             </div>
             <?php
         }

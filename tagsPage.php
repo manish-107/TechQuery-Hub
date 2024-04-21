@@ -34,7 +34,7 @@ function limitWords($string, $word_limit)
 
     <div style="padding-top:60px ;">
         <div class="content">
-            <h4>All questions</h4>
+            <h4>All tags</h4>
             <?php if (isset($row['user_id'])): ?>
                 <a href="askquestion.php" class="btn">Ask question</a>
             <?php else: ?>

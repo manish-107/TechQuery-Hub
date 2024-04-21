@@ -77,7 +77,7 @@ function limitWords($string, $word_limit)
                         <div class="uqCard">
                             <h2><?php echo $row_userQuest['title']; ?></h2>
                             <p><?php echo limitWords($row_userQuest['description'], 30); ?></p>
-                            <a href="">Delete</a>
+                            <a href="controller/deleteQuestions.php?q_id=<?php echo $row_userQuest['questionid']; ?>">Delete</a>
                         </div>
                     <?php } ?>
                 <?php } ?>
