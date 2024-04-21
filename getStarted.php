@@ -48,12 +48,12 @@ function limitWords($string, $word_limit)
     // Include the database configuration file
     // Execute the SQL query to fetch data
     $stmt = $admin->ret("SELECT q.questionid, q.title, q.description AS `desc`, q.questioneddate, u.username AS username, GROUP_CONCAT(t.tagname SEPARATOR ',') AS tags
-          FROM questions AS q 
-          JOIN questiontag AS qt ON q.questionid = qt.questionid
-          JOIN tags AS t ON qt.tagid = t.tagid
-          JOIN users AS u ON q.user_id = u.user_id
-          GROUP BY q.questionid
-          ORDER BY q.questioneddate DESC");
+            FROM questions AS q 
+            JOIN questiontag AS qt ON q.questionid = qt.questionid
+            JOIN tags AS t ON qt.tagid = t.tagid
+            JOIN users AS u ON q.user_id = u.user_id
+            GROUP BY q.questionid
+            ORDER BY q.questioneddate DESC");
 
     // Check if there are any rows fetched
     if ($stmt) {
@@ -61,8 +61,8 @@ function limitWords($string, $word_limit)
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Fetch the count of answers for this question
             $stma = $admin->ret("SELECT COUNT(*) AS answer_count
-                            FROM `answers` 
-                            WHERE `questionid` = '{$row['questionid']}'");
+                                FROM `answers` 
+                                WHERE `questionid` = '{$row['questionid']}'");
             $acount = $stma->fetch(PDO::FETCH_ASSOC)['answer_count'];
 
             ?>

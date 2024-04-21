@@ -51,6 +51,7 @@ function limitWords($string, $word_limit)
                     <div class="inputBox">
                         <label for="">Email </label>
                         <input value="<?php echo $row['u_email']; ?>" name="upt_email" type="email">
+                        <input value="<?php echo $uid ?>" name="upt_uid" type="number" hidden>
                     </div>
 
                     <div class="inputBox">
