@@ -61,6 +61,28 @@ function limitWords($string, $word_limit)
                 </div>
             </form>
         </div>
+
+        <?php
+        $userQust = $admin->ret("SELECT * FROM `questions` WHERE `user_id`='$uid'");
+        $rowcount = $userQust->rowCount();
+        ?>
+
+        <div class="content">
+            <h3>Your Questions</h3>
+            <div class="uqcardBody">
+                <?php if ($rowcount == 0) {
+                    echo "<h4>No questions by you 🤡</h4>";
+                } else { ?>
+                    <?php while ($row_userQuest = $userQust->fetch(PDO::FETCH_ASSOC)) { ?>
+                        <div class="uqCard">
+                            <h2><?php echo $row_userQuest['title']; ?></h2>
+                            <p><?php echo limitWords($row_userQuest['description'], 30); ?></p>
+                            <a href="">Delete</a>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+            </div>
+        </div>
     </div>
 
 </body>
