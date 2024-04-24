@@ -6,8 +6,8 @@ if (isset($_POST['q_submit'])) {
 
     $q_id = "cc10" . uniqid();
     $uid = $_SESSION['user_id'];
-    $qtitle = $_POST['q_title'];
-    $qdesc = $_POST['q_desc'];
+    $qtitle = addslashes(htmlspecialchars($_POST['q_title']));
+    $qdesc = addslashes(htmlspecialchars($_POST['q_desc']));
 
     // Check if the 'q_pic' file was uploaded
     if (isset($_FILES['q_pic'])) {
@@ -23,9 +23,9 @@ if (isset($_POST['q_submit'])) {
         $img_path = ""; // Set default or handle accordingly
     }
 
-    $stmt = $admin->cud("INSERT INTO `questions`( `questionid`, `user_id`, `title`, `description`, `qimage`) VALUES ('$q_id','$uid','$qtitle','$qdesc','$img_path')", "saved");
+    $qsstmt = $admin->cud("INSERT INTO `questions`(`questionid`, `user_id`, `title`, `description`, `qimage`) VALUES ('$q_id','$uid','$qtitle','$qdesc','$img_path')", "saved");
 
-    $qtags = $_POST['q_tags'];
+    $qtags = addslashes(htmlspecialchars($_POST['q_tags']));
     $tagsArray = explode(',', $qtags);
 
     foreach ($tagsArray as $tag) {
@@ -53,9 +53,10 @@ if (isset($_POST['q_submit'])) {
 
     // Insert tag IDs along with the question ID into the questiontag table
     foreach ($tagIds as $tagId) {
-        $stmt = $admin->cud("INSERT INTO `questiontag`(`tagid`,`questionid`) VALUES ('$tagId','$q_id')", "saved");
+        $ttstmt = $admin->cud("INSERT INTO `questiontag`(`tagid`,`questionid`) VALUES ('$tagId','$q_id')", "saved");
     }
 
     echo "<script>alert('Question added successfully'); window.location = '../getStarted.php' </script> ";
 
 }
+?>
