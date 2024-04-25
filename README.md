@@ -9,15 +9,12 @@ The purpose of TechQuery Hub is to provide students with a dynamic space to expl
 - User registration and authentication
 - Posting questions and answers
 - Commenting on posts
-- Upvoting and downvoting posts
 - Tagging questions with relevant topics
-- Searching for questions based on tags or keywords
-- Admin functionalities for managing users and content
 
 ## Technologies Used
 - HTML
 - CSS
-- JavaScript
+- JavaScript(JQuery)
 - PHP
 - SQL
 
@@ -25,7 +22,7 @@ The purpose of TechQuery Hub is to provide students with a dynamic space to expl
 To get started with TechQuery Hub, follow these steps:
 1. Clone the repository: `git clone https://github.com/your-username/TechQuery-Hub.git`
 2. Set up a local web server environment (e.g., XAMPP, WAMP).
-3. Import the database schema from the `database.sql` file.
+3. Import the database schema from the `techquery.sql` file.
 4. Configure the database connection in the PHP files.
 5. Launch the application and start exploring!..
 
@@ -33,7 +30,7 @@ To get started with TechQuery Hub, follow these steps:
 `Users:`
 1. UserID (Primary Key)
 2. Username
-3. Password (hashed)
+3. Password 
 4. Email
 5. JoinDate
 
