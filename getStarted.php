@@ -68,7 +68,7 @@ function limitWords($string, $word_limit)
             ?>
             <div class="card">
                 <div class="cardsec1">
-                    <p style="margin: 3px;color: #6696de;">123 votes</p>
+                    <p style="margin: 3px;color: #6696de;">✨ Question </p>
                     <p style="margin: 3px;color: aquamarine;"><?php echo $acount ?> Answers</p> <!-- Corrected here -->
                 </div>
                 <div class="cardsec2">
