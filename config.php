@@ -9,14 +9,6 @@ define('DB_DATABASE', "techquery"); //database name
 define('DB_PASSWORD', ""); //database user password
 define('DB_TYPE', 'mysql'); //database drive eg. mysql, pgsql, mongodb etc
 
-//========== site details described here ========================
-define('SITE_TITLE', 'demo.com');
-define('SITE_TAG_LINE', 'give your tag line of your project here');
-
-//contact ifnormation
-define('SITE_CONTACT', 'your number');
-//email information
-define('SITE_EMAIL_INFO', 'your mail id');
 //url information
 define('BASE_URL', 'http://localhost/TechQuery-Hub/');
 

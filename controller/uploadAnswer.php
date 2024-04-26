@@ -5,7 +5,7 @@ $admin = new Admin();
 if (isset($_POST['a_submit'])) {
     $userid = $_POST['user_id'];
     $question_id = $_POST['questionid'];
-    $adesc = $_POST['a_text'];
+    $adesc = addslashes(htmlspecialchars($_POST['a_text']));
     $a_id = "aa20" . uniqid();
     $stmt = $admin->cud("INSERT INTO `answers`(`answer_id`, `questionid`,`user_id`,`answerdesc`) VALUES ('$a_id','$question_id','$userid','$adesc  ')", "saved");
 
