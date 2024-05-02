@@ -5,11 +5,11 @@ $admin = new Admin();
 $qid = $_GET['q_id'];
 
 // Fetch the image path from the database before deleting the question
-$getImgPath = $admin->ret("SELECT `q_pic` FROM `questions` WHERE `questionid`='$qid'");
+$getImgPath = $admin->ret("SELECT `qimage` FROM `questions` WHERE `questionid`='$qid'");
 $num_rows = $getImgPath->rowCount();
 if ($getImgPath && $num_rows > 0) {
     $row = $getImgPath->fetch(PDO::FETCH_ASSOC);
-    $img_path = $row['q_pic'];
+    $img_path = $row['qimage'];
 
     // Delete the image file from the server
     if (!empty($img_path) && file_exists($img_path)) {
