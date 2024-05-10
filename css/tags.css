@@ -13,11 +13,11 @@
         border: 1px solid rgba(255, 255, 255, 0.522);
         color: rgb(220, 242, 243);
         padding: 10px; 
-       
+        transition: 900ms;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
-        width: fit-content;
+        width: 248px;
         height: 120px;
         border-radius: 10px;
     }
