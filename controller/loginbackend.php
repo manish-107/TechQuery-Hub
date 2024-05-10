@@ -1,6 +1,5 @@
 <?php
-include '../config.php'; // Include the configuration file
-$admin = new Admin(); // Instantiate the Admin class
+require '../config.php'; // Include the configuration file
 
 if (isset($_POST['l_user'])) {
     $uemail = $_POST['l_email']; // Get the email from the form

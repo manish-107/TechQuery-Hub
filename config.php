@@ -13,5 +13,6 @@ define('DB_TYPE', 'mysql'); //database drive eg. mysql, pgsql, mongodb etc
 define('BASE_URL', 'http://localhost/TechQuery-Hub/');
 
 // included main class
-require_once 'app/Main.php';
 require_once 'app/Admin.php';
+
+$admin = new Admin();

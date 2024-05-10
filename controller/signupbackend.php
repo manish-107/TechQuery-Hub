@@ -1,6 +1,5 @@
 <?php
 require '../config.php';
-$admin = new Admin();
 
 // Check if the POST data is set
 if (isset($_POST["email"]) && isset($_POST["password"])) {

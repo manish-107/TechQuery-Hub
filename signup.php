@@ -1,5 +1,4 @@
-<?php include 'config.php';
-$admin = new Admin();
+<?php require 'config.php';
 
 if (isset($_SESSION['user_id'])) {
     header('location:getstarted.php');

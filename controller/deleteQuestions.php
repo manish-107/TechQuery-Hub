@@ -1,6 +1,5 @@
 <?php
-include '../config.php';
-$admin = new Admin();
+require '../config.php';
 
 $qid = $_GET['q_id'];
 

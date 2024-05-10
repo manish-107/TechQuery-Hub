@@ -1,6 +1,5 @@
 <?php
-include '../config.php';
-$admin = new Admin();
+require '../config.php';
 
 if (isset($_POST['q_submit'])) {
 
