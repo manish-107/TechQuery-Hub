@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +15,7 @@
 </head>
 
 <body>
-           <?php include "includes/header.php"; ?>
+    <?php include "includes/header.php"; ?>
 
 
     <main>
@@ -30,7 +29,7 @@
             </div>
             <div class="btns center">
                 <button class="btn" onClick="window.location.href = `getStarted.php` ">Get started</button>
-                <button class="btn2">Lets Connect</button>
+                <a class="btn2" href="https://github.com/manish-107">Lets Connect</a>
             </div>
 
         </div>
