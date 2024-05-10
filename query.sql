@@ -1,3 +1,42 @@
+CREATE TABLE techquery;
+
+USE techquery;
+
+/* create table users */
+CREATE TABLE users (userid INT PRIMARY KEY AUTO_INCREMENT,username VARCHAR(20) NOT NULL,password VARCHAR(30) NOT NULL,email VARCHAR(50) NOT NULL,joindate TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+INSERT INTO users (username, password, email) VALUES('john_doe','password','john@example.com');
+
+/* question table */
+CREATE TABLE questions(questionid INT PRIMARY KEY AUTO_INCREMENT,userid INT NOT NULL,title VARCHAR(255) NOT NULL, qdesc TEXT NOT NULL,qcreationdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,FOREIGN KEY (userid) REFERENCES users(userid));
+
+INSERT INTO questions (userid, title, qdesc)VALUES (1, 'How to create a table in SQL?', 'I want to learn how to create a table in SQL.');
+
+/* create answers table */
+CREATE TABLE answers(answerid INT PRIMARY KEY AUTO_INCREMENT,questionid INT NOT NULL,userid INT NOT NULL,ansdesc text NOT NULL ,creationdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,FOREIGN KEY(userid) REFERENCES users(userid),FOREIGN KEY(questionid) REFERENCES questions(questionid));
+
+INSERT INTO answers (answerid,questionid, userid, ansdesc) VALUES(1, 1, 1, 'This is the first answer to question 1.');
+
+/* Tags table */
+CREATE TABLE tags(tagid INT PRIMARY KEY AUTO_INCREMENT,tagname varchar(15) NOT NULL);
+
+INSERT INTO Tags(TagName)VALUES('sql');
+
+/* question tag */
+CREATE TABLE questiontags(questionid INT,tagid INT,FOREIGN KEY(questionid) REFERENCES questions(questionid),FOREIGN KEY(tagid)REFERENCES tags(tagid),PRIMARY KEY(questionID,tagid));
+
+INSERT INTO questiontags (questionid, tagid) VALUES(1, 2);
+
+/*Answer comments */
+CREATE TABLE answercomment(acommid INT PRIMARY KEY AUTO_INCREMENT,userid INT,answerid INT,acdesc TEXT NOT NULL,FOREIGN KEY(answerid)REFERENCES answers(answerid),FOREIGN KEY(userid)REFERENCES users(userid));
+
+INSERT INTO answercomment(answerid,userid,acdesc)VALUES(1,3,'you should ask question in understanding way');
+
+/* Votes */
+CREATE TABLE votes (voteid INT PRIMARY KEY AUTO_INCREMENT,userid INT,questionid INT,votetype ENUM('like', 'dislike') NOT NULL,FOREIGN KEY (userid) REFERENCES users(userid),FOREIGN KEY (questionid) REFERENCES questions(questionid));
+
+INSERT INTO votes (userid, questionid, votetype) VALUES (2, 1, 'like');
+
 SELECT * FROM Users;
 
 SELECT * FROM Questions;
