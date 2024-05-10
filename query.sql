@@ -8,7 +8,7 @@ CREATE TABLE users (userid INT PRIMARY KEY AUTO_INCREMENT,username VARCHAR(20) N
 INSERT INTO users (username, password, email) VALUES('john_doe','password','john@example.com');
 
 /* question table */
-CREATE TABLE questions(questionid INT PRIMARY KEY AUTO_INCREMENT,userid INT NOT NULL,title VARCHAR(255) NOT NULL, qdesc TEXT NOT NULL,qcreationdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,FOREIGN KEY (userid) REFERENCES users(userid));
+CREATE TABLE questions(questionid INT PRIMARY KEY AUTO_INCREMENT,userid INT NOT NULL,title VARCHAR(255) NOT NULL, qdesc TEXT NOT NULL,  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,FOREIGN KEY (userid) REFERENCES users(userid));
 
 INSERT INTO questions (userid, title, qdesc)VALUES (1, 'How to create a table in SQL?', 'I want to learn how to create a table in SQL.');
 
@@ -36,6 +36,8 @@ INSERT INTO answercomment(answerid,userid,acdesc)VALUES(1,3,'you should ask ques
 CREATE TABLE votes (voteid INT PRIMARY KEY AUTO_INCREMENT,userid INT,questionid INT,votetype ENUM('like', 'dislike') NOT NULL,FOREIGN KEY (userid) REFERENCES users(userid),FOREIGN KEY (questionid) REFERENCES questions(questionid));
 
 INSERT INTO votes (userid, questionid, votetype) VALUES (2, 1, 'like');
+
+
 
 SELECT * FROM Users;
 
