@@ -17,6 +17,19 @@ END;
 
 DELIMITER ;
 
+--delete question
+DELIMITER //
+CREATE TRIGGER delete_question
+BEFORE DELETE ON questions
+FOR EACH ROW
+BEGIN
+    DELETE FROM votes WHERE questionid=OLD.questionid;
+    DELETE FROM votes WHERE answerid IN(SELECT answerid FROM answers WHERE questionid=OLD.questionid);
+    DELETE FROM answercomment WHERE answerid IN (SELECT questionid FROM answers WHERE questionid=OLD.questionid);
+    DELETE FROM answers WHERE questionid=OLD.questionid;
+END;
+//
+DELIMITER ;
 
 
 --create a trigger on like
