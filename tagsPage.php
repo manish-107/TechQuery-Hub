@@ -56,7 +56,7 @@ function limitWords($string, $word_limit)
             ?>
             <div href="" class="intagcon">
                 <div style="margin-bottom:5px;color: aqua;" href=""><?php echo $rowtt['tagname'] ?></div>
-                <div> <?php echo limitWords($rowtt['last_updated_question_desc'], 10); ?></div>
+                <div> <?php echo limitWords($rowtt['last_updated_question_desc'], 6); ?></div>
                 <p style="margin:3px">Question :<?php echo $rowtt['question_count'] ?></p>
             </div>
             <?php

@@ -1,17 +1,26 @@
 <?php
 
-// Define a class named Admin, inheriting properties and methods from the Main class
-class Admin extends Main
+class Admin
 {
+	// Define a protected property to store the database connection
+	protected $conn = null;
+
 	// Define a protected property to store the admin ID
 	protected $id;
 
 	// Constructor method
 	public function __construct()
 	{
-		// Initialize the parent constructor
-		// $this->id = $_SESSION['admin']; // Note: This line is commented out, perhaps for testing purposes
-		parent::__construct();
+		try {
+			// Attempt to create a PDO database connection using constants for database configuration
+			$this->conn = new PDO(DB_TYPE . ":host=" . DB_SERVER . ";dbname=" . DB_DATABASE, DB_USER, DB_PASSWORD);
+			// Set PDO error mode to exception for better error handling
+			$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		} catch (PDOException $e) {
+			// If connection fails, display an error message and exit
+			echo '<h3>Database Not Connected</h3>', '<p>Please Check database connection before running this site ...</p>';
+			exit;
+		}
 	}
 
 	// Method to perform Create, Update, Delete operations
@@ -41,6 +50,5 @@ class Admin extends Main
 		$stmt->execute();
 		return $stmt; // Return the executed statement
 	}
-
 }
 ?>
